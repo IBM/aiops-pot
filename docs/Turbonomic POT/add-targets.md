@@ -107,7 +107,7 @@ Kubeturbo can be installed on Kubernetes version 1.11 or higher and OpenShift re
 
 - Turbonomic Server URL
 - Turbonomic Server credentials for Kubeturbo to communicate with. Typically it can be Site Administrator or Administrator role
-- Access to registry `icr.io/cpopen/turbonomic/kubeturbo:<version>` (Version 8.7.5 or higher) or [Docker hub](docker.io) for versions 8.7.4 or lower
+- Access to registry `icr.io/cpopen/turbonomic/kubeturbo:<version>` (Version 8.7.5 or higher) or [Docker hub / docker.io ] for versions 8.7.4 or lower
 - Ports 443 and 10250 
   
 ### Types of Deployment of Kubeturbo
