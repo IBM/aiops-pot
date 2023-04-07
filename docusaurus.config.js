@@ -67,7 +67,7 @@ const config = {
         title: 'AIOps Proof of Technology',
         logo: {
           alt: 'IBM AIOps',
-          src: '/assets/images/ibm-watson-logo.png',
+          src: '/img/ibm-watson-logo.png',
         },
         items: [
           {
