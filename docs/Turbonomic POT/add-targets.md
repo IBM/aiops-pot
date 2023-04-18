@@ -21,17 +21,17 @@ We have already prepared an Instana server for your environment. This server is 
 
 ### Generate Instana API Key
 
-1. To connect Instana to Turbonomic you will need API key from your Instana server so that Turbonomic can authenticate the connection. To generate this key navigate to you bastian VM (link provided in Lab Environment document). The link should automatically log you in. You should see the desktop for RedHat Enterprise Linux.
+1. To connect Instana to Turbonomic you will need API key from your Instana server so that Turbonomic can authenticate the connection. To generate this key navigate to you bastion VM (link provided in Lab Environment document). The link should automatically log you in. You should see the desktop for RedHat Enterprise Linux.
 
 2. From the top left corner click on "Activities" and select "FireFox".
 
-![bastian1](img/addtargets/bastian1.png)
+![o1](img/addtargets/bastian1.png)
 
 3. In the address bar, type in the IP address of your Instana server that is provided in the lab environment instructions.
 
-![bastian2](img/addtargets/bastian2.png)
+![o2](img/addtargets/bastian2.png)
 
-4. This will take to to the Instana login page. log in using your Instana credentials.
+4. This will take you to the Instana login page. log in using your Instana credentials. Instana credentials are provided in Turbo-PoT-Credentials, which is opened on the second tab of the browser.
 
 ![instana1](img/addtargets/instana1.png)
 
@@ -53,7 +53,7 @@ We have already prepared an Instana server for your environment. This server is 
 
 ### Add Instana as a target
 
-1. Click on "Settings" from the navigator.
+1. After you log in to the Turbonomic console, click on "Settings" from the navigator.
 
 ![turbo-main](img/addtargets/turbo-main.png)
 
@@ -107,7 +107,7 @@ Kubeturbo can be installed on Kubernetes version 1.11 or higher and OpenShift re
 
 - Turbonomic Server URL
 - Turbonomic Server credentials for Kubeturbo to communicate with. Typically it can be Site Administrator or Administrator role
-- Access to registry `icr.io/cpopen/turbonomic/kubeturbo:<version>` (Version 8.7.5 or higher) or [Docker hub / docker.io ] for versions 8.7.4 or lower
+- Access to registry `icr.io/cpopen/turbonomic/kubeturbo:<version>` (Version 8.7.5 or higher) or [Docker hub or docker.io] for versions 8.7.4 or lower
 - Ports 443 and 10250 
   
 ### Types of Deployment of Kubeturbo
@@ -118,17 +118,19 @@ Kubeturbo can be deployed in three ways. They are:
 - Operator (OperatorHub for OpeNShift)
 - Helm chart
 
-More information is available on the [Kubeturbo Wiki](https://github.com/turbonomic/kubeturbo/wiki). In this tutorial, you will be installing Kuebturbo via helm chart.
+More information is available on the [Kubeturbo Wiki](https://github.com/turbonomic/kubeturbo/wiki). In this tutorial, you will be installing Kubeturbo via helm chart.
 
 ### Kubeturbo deployment via Helm charts
 
-As per the requirements you have the Turbonomic Server URL. As a best practice, create a service account with te Site Administrator role to be used during Kubeturbo deployment.
+As per the requirements, for the KubeTurbo to communicate with the Turbonomic server, you need
+* Turbonomic URL: https://10.0.0.1
+* ServiceAccount: kubeserviceaccount (you will create this as described below)
 
 ### Create Service Account
 
 The various steps to create a service account are:
 
-- Log in to the Turbonomic Server using credentails `administrator: Turbo4All!`
+- Log in to the Turbonomic Server using credentails `administrator: <password from Turbo-PoT-Credentials>`
 - Go to Settings -> User Management 
   ![user_mgmt](img/addtargets/usermgmt.png)
 
@@ -137,7 +139,7 @@ The various steps to create a service account are:
 
 - For the user details please fill as
   - **USERNAME**: kubeserviceaccount
-  - **PASSWORD**: Refer to "credentials.pdf" on you bastian VM
+  - **PASSWORD**: Refer to "Turbo-PoT-Credentials" on you bastion VM
   - **ROLE**: Site Administrator (default)
   - and then click **SAVE**  
   ![newuser](img/addtargets/userdetails.png)
@@ -149,16 +151,16 @@ The various steps to create a service account are:
 
 The Kubeturbo is installed on the provided Kubernetes cluster. The various tasks are:
 
-- Find the Turbonomic Server Version from th econsole: The version here is **8.8.2** as shown in the picture.  
+- Find the Turbonomic Server Version from the console: The version here is **8.8.2** as shown in the picture.  
   
   ![turbo_version](img/addtargets/turbosrv_version.png)
 
-- SSH to server kmaster (IPAddress: 10.0.0.3) using **user-id: cocuser**, **password: Refer to "credentials.pdf" on you bastian VM** and **ssh port: 2022**
+- SSH to server kmaster (IPAddress: 10.0.0.3) using **user-id: cocuser**, **password: Refer to "Turbo-PoT-Credentials" on you bastion VM** and **ssh port: 2022**
   
   ```
   ssh -p 2022 cocuser@10.0.0.3
-  cocuser@kmaster:~$ helm ls
-  cocuser@kmaster:~$ helm ls
+  cocuser@kmaster:~$ helm ls -A  (To list all the helm releases in the cluster)
+  cocuser@kmaster:~$ helm ls -n instana-agent (for example)
    NAME          NAMESPACE    	REVISION	UPDATED                                	STATUS  	CHART               	APP VERSION
    instana-agent instana-agent	1       	2023-03-20 23:33:01.070041691 -0400 EDT	deployed	instana-agent-1.2.56	1.244.0
   ```
@@ -180,7 +182,7 @@ The Kubeturbo is installed on the provided Kubernetes cluster. The various tasks
        --set serverMeta.turboServer=https://10.0.0.1 \
        --set serverMeta.version=8.8.2 --set image.tag=8.8.2 \
        --set restAPIConfig.opsManagerUserName=kubeserviceaccount \
-       --set restAPIConfig.opsManagerPassword=" Refer to "credentials.pdf" on you bastian VM " \
+       --set restAPIConfig.opsManagerPassword='Refer to Turbo-PoT-Credentials' \
        --set targetConfig.targetName=kubecluster1
   ```
 
@@ -194,6 +196,32 @@ The Kubeturbo is installed on the provided Kubernetes cluster. The various tasks
   REVISION: 1
   TEST SUITE: None
   ```
+
+- **Tip**: The following commands may be handy
+
+   ```
+   # To remove helm release
+   helm delete <release name> -n <namespace>
+
+   For ex: helm delete kubeturbo -n turbo (To delete kubeturbo)
+
+   # To upgrade an existing release
+   helm upgrade <release name> -n <namespace> <other options>
+
+   For ex: (note the password change)
+   helm upgrade  kubeturbo  ./kubeturbo --namespace turbo \
+       --set serverMeta.turboServer=https://10.0.0.1 \
+       --set serverMeta.version=8.8.2 --set image.tag=8.8.2 \
+       --set restAPIConfig.opsManagerUserName=kubeserviceaccount \
+       --set restAPIConfig.opsManagerPassword=myPassw0rd \
+       --set targetConfig.targetName=kubecluster1
+
+   # To set the context for a namespace
+   kubectl config set-context --current --namespace=<namespace>
+
+   For ex: (to set the context to turbo namespace)
+   kubectl config set-context --current --namespace=turbo
+   ```
 
 - You can check the logs to see if kubeturbo is communicating with the Turbonomic Server.
   

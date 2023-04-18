@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Introduction
 
-This lab present's Instana value proposition in context of other IBM middleware . In this section, you will find guidance about configuring and using Instana with the following IBM middleware technologies:
+This Proof-of-Technology showcases Instana's value proposition in context to other IBM middleware products. In the following labs, you will find guidance about configuring and using Instana with the following IBM middleware technologies:
 
 - MQ
 - App Connect Enterprise (ACE)
@@ -21,7 +21,8 @@ This lab present's Instana value proposition in context of other IBM middleware 
 https://169.62.62.167.nip.io/#/home
 
 E-Mail: admin@instana.local
-Password: **see password file**
+
+Password: please refer to **credentials.txt** on the Instana server
 
 **Robot Shop**
 http://169.62.62.185:31965

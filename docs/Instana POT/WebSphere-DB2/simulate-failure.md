@@ -21,32 +21,41 @@ The detected changes are recorded against the entity in the **Dynamic Graph** - 
 
 In this section you will learn how to identify application errors with Instana that are causing latency in the application and be able to apply fixes. 
 
-1. Navigation to the Applications tab and notice there is a high number of high number of Erroneous calls from the application. 
+1. Navigation to the Applications tab and notice there is a high number of high number of **Erroneous calls** from the application. 
 
     ![](images/applications_list.png)
 
-2. Select the **Stock Trader** application perspective and notice that almost every call to the application is resulting in an error. This can be seen in the Calls section as well as the Erroneous calls section.
+2. Select the **Stock Trader** application perspective and notice that almost every call to the application is resulting in an error. This can be seen in the **Calls** section as well as the **Erroneous calls** section.
 
     ![](images/erroneous_calls.png)
 
 
-3. Highlight a portion of the failed calls in the Erroroneuos calls section and Select **View In Analyze**
+3. Highlight a portion of the failed calls in the **Erroneous calls** section and Select **View In Analyze**
    
     ![](images/analyze_calls.png)
 
 
-4. The Analytics > Application/Calls page shows each request from the application with the timestamp and call Latency.
+4. The **Analytics > Application/Calls** page shows each request from the application with the timestamp and call Latency.
 
     ![](images/trade_web.png)
 
 
-5. Select one of the calls to see the timeline of when the error occuered. The Calls section shows a post request is made to the application without providing user credentials.
+5. Select one of the calls to see the timeline of when the error occuered. The **Calls** section shows a post request is made to the application without providing user credentials.
 
     ![](images/analytics_error.png)
 
 6. The errors are occuring from the load generator script that processes a buy transaction from the Stock Trader application but does not authenticate the user before submitting the requst.
+
+Scroll down on the right hand side section till you see **Logs** and expand that section to see the stack trace of the error. As you can see - there are a few exceptions.
+
+   ![](images/failure_log_errors.png)
+
+7. Click on the **log incom.ibm.ws.logging.WsLogger:380** to peek in to the code. Scroll down to check the line no 380. This shows the power of Instana to show errors at code level!
+
+![](images/failure_log_error_code_level.png)
+
    
-   To resolve this issue, we will need to stop the load generator and apply a fix to the script. 
+To resolve the credentials issue, we will need to stop the load generator and apply a fix to the script. 
 
    From the terminal, search the load generator script and kill the process using the kill command
 
@@ -59,7 +68,7 @@ In this section you will learn how to identify application errors with Instana t
    kill <processID>
    ```
 
-    ![](images/kill_load_generator.png)
+![](images/kill_load_generator.png)
 
 
 

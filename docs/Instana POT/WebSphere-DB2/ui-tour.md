@@ -43,7 +43,57 @@ sidebar_position: 3
 
 # 3.2 Exploring the Application Monitoring Dashboard 
 
-Covered in section **#2 Create the Stock Trader Application Perspective**
+
+After creating the application, your screen should have automatically changed context to show the Application Perspective that you just defined.
+
+1. Initially, you probably won’t see any metrics on the screen. Change the timeframe in the **Time Picker** to **Last minute** as shown below so that you can see the metrics populated in the perspective.
+
+![Update_Time_Picker](images/update_time_picker.png)
+
+Alternatively, in the upper right corner, click the **Live** button and within a short amount of time you should start to see metrics in the widgets.
+
+2. You will see something similar to the following screen. Note the columns on this dashboard including columns for each application key performance indicator: **Calls, Latency and Erroneous Call Rate**
+
+![Application_Perspective](images/application_perspective.png)
+
+3. You’ll notice a number of tabs across the top of the screen. Explore these tabs. In particular, let’s take a look at the **Depedencies** tab. On the dependencies tab, you’ll see a complete topology of the application services. This topology is discovered automatically. You can see transactions flowing between the different nodes in the topology. 
+
+    ![App_Perspective_Dependencies](images/app_perspective_dependencies.png)
+
+4. Select on **Upstream/Downsteam** near the top of the page. This will allow you to see a list of Upstream and Downstream services for the application.
+   
+   ![App_Perspective_Upstream](images/app_perspective_upstream.png)
+
+5. Select **Stack** where you can view the **Application, Kubernetes, and Infrastructure** stack that makes up the application.
+
+    All of this contextual and relationship data helps you analyze and debug you applications to get to root cause as quickly as possible. In addition, our built-in analytics uses this data to automatically group multiple related **Events** into a single **Incident** for diagnosis.
+
+    ![App_Perspective_Stack](images/app_perspective_stack.png)
+
+    Close the Stack dialog by either selecting the Stack button or anywhere on the background of the Instana page.
+
+6. Select the **Services** Tab. Under Services, note the number of services included in each Application Perspective.
+
+Services are a part of application monitoring and provide a logical view of your system. Services are derived from infrastructure components such as hosts, containers, and processes. The act of assigning specific components to one or more services, is referred to as service mapping.
+
+Instana automatically maps all services based on an extensive set of predefined rules. Based on these rules, calls and infrastructure data are examined before a service is created.
+
+![App_Perspective_Services](images/app_perspective_services.png)
+
+
+Note additional information provided for each service: **type, technology, latency, endpoints, and health**. 
+
+7. On the above screen, click on any column header to sort the list based on that column’s value. Note the different filtering options available on the right above the list: **type, technology, and text-based search**. 
+
+8. Click on the **Log Messages** tab and observe the generated Logs. Feel free to click on the log messagess and explore further.
+
+![App_Perspective_Log_Messages](images/app_perspective_log_messages.png)
+
+9. Click on the **Error Messages** tab and observe the generated error messages. Feel free to click on the error message and explore further. It shows that our application is continuously generating errors and those need to be addressed.
+
+![App_Perspective_Error_Messages](images/app_perspective_error_messages.png)
+
+
 
 # 3.3 Exploring the Analytics Dashboard
 
@@ -51,11 +101,20 @@ Covered in section **#2 Create the Stock Trader Application Perspective**
 
 2. Next to **Analytics > Applications**, click on the down arrowhead to see different dashboards available within Analytics, including: **Calls, Traces or Log (Beta), dashboards**
 
-3. Results shown on any Analytics dashboards are not filtered or grouped by default. Note the two upper panes under the dashboard **title, Filter and Group**.  
+3. On the Analytics dashboard, traces or calls can be filtered and grouped using arbitrary tags. In Analyze Calls, filters can be connected using the AND and OR logic operators and grouped together with brackets. In Analyze Traces, only the AND operator is available
 
-![UI_Tour_Analytics Dashboard](images/ui_tour-analytics-dashboard.png)
+Note the two upper panes under the dashboard **title, Filter and Group**.  
+
+![UI_Tour_Analytics Dashboard](images/ui_tour_analytics_dashboard.png)
 
 4. Click on **Add Filter** or **Add Group** to see different categories and tags available to filter or group the dataset shown by the Analytics dashboard. 
+
+There are two approaches to filter data:
+
+Query Builder
+Filter Sidebar
+
+While both of them are usable on their own, best results are achieved when combining them.
 
 5. Click on **Stan** to go back to the landing page.
 

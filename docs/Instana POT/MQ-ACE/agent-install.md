@@ -4,7 +4,13 @@ sidebar_position: 3
 
 # Instana Agent Installation
 
-This POT, we use the Quote Of The Day (QOTD) application to similate the ACE / MQ work load. The QOTD services are deployed into two different runtimes. One is the OKD kubernetes cluster, the other is the docker. ACE/MQ server is deployed in a Linux. Hence, we will deployed Instana agents on all there runtimes. 
+:::note
+
+**If you have already installed the agent following the instructions in the "Monitoring a Cloud Native App" lab, then you can skip this section and proceed to the next lab "Configuration"**
+
+:::
+
+In this Proof-of-Technology, we use the Quote Of The Day (QOTD) application to similate the ACE / MQ work load. The QOTD services are deployed into two different runtimes. One is the OKD kubernetes cluster, the other is the docker. ACE/MQ server is deployed in a Linux. Hence, we will deployed Instana agents on all there runtimes. 
 
 ![agents](images/agents.png)
 
@@ -17,9 +23,9 @@ Open a web browser and login to the Instana Server UI:
 
 Use the following credentials:
 
-    E-Mail: admin@instana.local
+E-Mail: admin@instana.local
 
-    Password: **see password file**
+Password: please refer to **credentials.txt** on the Instana server
 
 
 ## Instana Agent Deployment Options (Review the Install UI page)
@@ -88,10 +94,9 @@ Open up a terminal window from the bastion VM and login to the mqace vm as shown
 
      ssh -p 2022 cocuser@169.62.62.188
 
-Then use sudo to switch to root:
+Then use sudo to switch to root  
 
     sudo -i
-    ./start-apps.sh
 
 In Instana UI, select the "Stan" the robot icon in the upper left corner as shown below in **Image 4**
 
@@ -142,9 +147,66 @@ In the configuraiton.yaml file, search for Zone and update the file as shown bel
 
 ***Image 8***
 
-Removing the **"#"** for all the three lines. 
+Removing the **"#"** for all the three lines, and put two spaces in front of the second and the third line. 
+
+IMPORTANT
+YAML files are very strict about indentation. Each line within the file must be indented by 0, 2, 4, 6, etc. spaces. Do not use tabs and do not indent by odd numbers of characters. Make sure that all of the characters line up vertically within the text. If you see a line that is commented out and you need to uncomment it, just remove the single "#" character.
 
 ![ipot-vm-instana-configuration_yaml_changes](images/ipot-vm-instana-configuration_yaml_changes_mqace.png)
+
+
+#### Configure the ACE and MQ Sensors
+
+Within the editor, scroll down to the section titled **"# IBM ACE"**
+
+You will need to uncomment the required entries and change the parameters to match the ACE/MQ configuration on this server. If you read the description on each line, you'll see that some parameters are optional.
+
+For more information about about the ACE configuration, view the online documentation found here: link
+
+There are multiple options for configuring the sensor. The information shown matches this particular environment. A few key possibilities:
+
+If ACE is configured for MQTT, the configuration will be different than if ACE is configured to use MQ.
+The configuration will be different if you are doing remote monitoring vs. local.
+Pay careful attention to the required vs. optional parameters. For example, in some environments the MQ Channel Authentication is disabled and you don't need to specify credentials.
+Edit the IBM ACE section of the file so that it looks like this. If you want, you can copy this text and replace the entire section. Or, you can change the individual parameters.
+
+IMPORTANT
+When you paste this information, you must replace [mqm password] with the password provided by the lab proctor.
+
+    com.instana.plugin.ace:
+      enabled: true
+      poll_rate: 20
+      NodesOrServers: # Multiple Integration node instances or multiple standalone Integration Servers can be specified
+        BK1: # specify the Integration node/server name (required)
+          restApiPort: "4414" # ACE rest api port (required)
+          mqport: "1414" # Sets the port for remote administration IBM MQ channel port or the MQTT server port (required)
+          queuemanagerName: "QM1" # Queue Manager name (required for IBM MQ)
+          channel: "ACE.SVRCONN" # Remote administration channel (required for IBM MQ)
+          mqUsername: "mqm" # MQ channel authentication's username if security enabled (optional for IBM MQ)
+          mqPassword: "[mqm password]" # MQ channel authentication's password if security enabled (optional for IBM MQ)
+
+
+In the example above, QM1 is the Queue Manager name. BK1 is the name of the Integration Server. ACE.SVRCONN is the channel that the sensor will connect to in order to query the performance KPIs. The username of mqm is the admin username for MQ, but the sensor does not require administrative permissions. Any valid MQ user can be specified as long as it has permissions to connect to the channel.
+
+Next, you will need to edit the MQ sensor settings. Scroll further down in the file until you find the section titled "IBM MQ". You will be editing this section of the configuration to match the settings of the MQ server. There are a number of mandatory and optional parameters. For more information on the configuration settings, see the online documentation: link
+
+Edit the # IBM MQ section of the file so that it looks like this. If you want, you can copy this text and replace the entire section. Or, you can change the individual parameters.
+
+IMPORTANT
+When you paste this information, you must replace [mqm password] with the password provided by the lab proctor.
+
+    
+    # IBM MQ
+    com.instana.plugin.ibmmq:
+      enabled: true
+      poll_rate: 5
+      queueManagers: # Multiple Queue Manager instances can be specified
+        QM1:
+          channel: "ACE.SVRCONN" # Remote administration channel
+          username: "mqm"
+          password: "[mqm password]"
+    
+
 
 Save the file.
 
@@ -154,9 +216,9 @@ Next, let's validate the agent is installed, Open a web browser and login to the
 
 Use the following credentials:
 
-    E-Mail: admin@instana.local
+E-Mail: admin@instana.local
 
-    Password: **see password file**
+Password: please refer to **credentials.txt** on the Instana server
 
 
 In Instana UI, select the "Stan" the robot icon in the upper left corner as shown below in **Image 9**
@@ -178,7 +240,6 @@ You can click on the item to get the detail information.
 ***Image 11***
 
 ![ipot_WAS_Agent](images/ipot_agents.png)
-
 
 Next, Click Infrastructure as shown below in **Image 12**
 
@@ -241,7 +302,7 @@ Next, click the "Deploy Agent" button near the upper right corner as shown below
 
 A window will open with a list of different environments where you can install the Instana Agent. 
 
-In this case, we will be installing the Kubernetes agent, so select Kubernetes on the left side of the screen and select the options in the order (1 to 5) as highlighted below in  **Image 19**
+In this case, we will be installing the Kubernetes agent, so select Kubernetes on the left side of the screen and select the options in the order (1 to 2) as highlighted below in  **Image 19**
 
 ***Image 19***
 
@@ -316,9 +377,10 @@ Next, let's validate the agent is installed, Open a web browser and login to the
 
 Use the following credentials:
 
-    **E-Mail:** admin@instana.local
 
-    **Password:** **see password file**
+    E-Mail: admin@instana.local
+
+    Password: <please refer to credentials.txt> on the Instana server
 
 
 In Instana UI, select the "Stan" the robot icon in the upper left corner as shown below in **Image 25**

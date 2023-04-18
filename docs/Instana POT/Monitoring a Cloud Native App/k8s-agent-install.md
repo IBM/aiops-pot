@@ -252,6 +252,9 @@ Next, let's move on to installing the Kubernetes agents.
 
 In this section, you will be installing the Instana Kubernetes Agent on the following 2 servers that have been provisioned for you for this lab.
 
+## Note: Do not install Kubernetes agent as "ROOT"
+
+
     . IP: 169.62.62.185 **itz-######-ipot-rsmaster**
     . IP: 169.62.62.174 **itz-######-ipot-qotdmaster**
 
