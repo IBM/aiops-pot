@@ -2,6 +2,7 @@
   "label": "Turbonomic POT",
   "position": 3,
   "link": {
-    "type": "generated-index"
+    "type": "generated-index",
+    "description": "The Turbonomic proof of technology (PoT) provides hands-on experience using Turbonomic in a controlled environment.  In this POT, you'll learn the basics of using Turbonomic.  You'll learn to connect Turbonomic to your source of truth called 'targets', perform administrative actions, explore basic usage of the solution, learn about the various actions and policies, building custom dashboards, and more."
   }
 }
