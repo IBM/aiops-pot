@@ -8,7 +8,7 @@ Hands on experience using IBM Solutions with predefined scenarios.
 
 ## Getting Started
 
-Expand the Proof of Technology (POT) that you'll be using for today's session.  Your proctors will guide you through the process.  They will be available to assist you and provide additional guidance or context as need throughout the POT.
+Expand the Proof of Technology (POT) that you'll be using for today's session.  Your proctors will guide you through the process.  They will be available to assist you and provide additional guidance or context as needed throughout the POT.
 
 ## Prerequisites to start POT 
 
