@@ -3,6 +3,6 @@
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "The Instana proof of technology (PoT) provides hands-on experience using Instana in a controlled environment.  The systems, application, and usage scenarios that is part of the POT were predefined.  You'll gain experience using Instana by Installing agent(s), exploring various aspects of Instana, troubeshoot application issue(s), setting up smart alerts, and more."
+    "description": "The Instana proof of technology (PoT) provides hands-on experience using Instana in a controlled environment.  The systems, application, and usage scenarios that is part of the POT were predefined.  You'll gain experience using Instana by installing agent(s), exploring various aspects of Instana, troubeshoot application issue(s), setting up smart alerts, and more."
   }
 }
