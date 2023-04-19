@@ -2,7 +2,7 @@
 sidebar_position: 9
 ---
 
-# Custom Dashboard
+# Custom Dashboard ~ 20 minutes
 In this lab, we will show you how to create a Custom Dashboard. 
 
 A custom dashboard is a view that you create to focus on specific aspects of your environment. You can create dashboards that are private to your user account, or dashboards that are visible to any user who logs into your Turbonomic deployment.
@@ -73,13 +73,13 @@ We will customize this dashboard to show certain metrics for "Quote Of The Day" 
 
 ![turbo-main](img/turbo_custom_dashboard_health1.png)
 
-4. Next, Select Scope, ensure you are on Entities and select Businss Application as shown below in Image 9. Follow the order (1 to 3) in Image 9 
+4. Next, Select Scope, ensure you are on Entities and select Business Application as shown below in Image 9. Follow the order (1 to 3) in Image 9 
 
 ***Image 9***
 
 ![turbo-main](img/turbo_custom_dashboard_health2.png)
 
-5. Next, Select "Qoute of the Day" from Businss Application as shown below in Image 10
+5. Next, Select "Quote of the Day" from Businss Application as shown below in Image 10
 
 ***Image 10***
 
@@ -140,7 +140,7 @@ Next, let's add one more widget to the Custom Dashboard.
 
 ![turbo-main](img/turbo_custom_dashboard_health2.png)
 
-5. Next, Select "Qoute of the Day" from Businss Application as shown below in Image 19
+5. Next, Select "Quote of the Day" from Businss Application as shown below in Image 19
 
 ***Image 19***
 

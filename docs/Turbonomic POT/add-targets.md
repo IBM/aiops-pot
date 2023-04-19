@@ -2,11 +2,11 @@
 sidebar_position: 3
 ---
 
-# Add Targets
+# Add Targets ~ 60 minutes
 
 A target is a service that performs management in your virtual environment. Turbonomic uses targets to monitor workload and to execute actions in your environment. Turbonomic communicates with the target via the management protocol that it exposes — The REST API, SMI-S, XML, or some other management transport. Turbonomic uses this communication to discover the managed entities, monitor resource utilization, and execute actions.
 
-Tip: Turbonomic must be on a network that has access to the specific services you want to set up as targets. (but we have this part covered for this session)
+**Tip:** Turbonomic must be on a network that has access to the specific services you want to set up as targets. (but we have this part covered for this session)
 
 In this lab, you will add two targets to your Turbonomic environment
 
@@ -19,41 +19,34 @@ Turbonomic supports discovery of applications that are managed by APM tools - in
 
 We have already prepared an Instana server for your environment. This server is monitoring two applications: RobotShop and Quote of the Day. In this section, you will go through steps to add this Instana instance to your Turbonomic environment.
 
-### Generate Instana API Key
+### Generate Instana API Token
 
-1. To connect Instana to Turbonomic you will need API key from your Instana server so that Turbonomic can authenticate the connection. To generate this key navigate to you bastion VM (link provided in Lab Environment document). The link should automatically log you in. You should see the desktop for RedHat Enterprise Linux.
+1. To connect Instana to Turbonomic you will need API token from your Instana server so that Turbonomic can authenticate the connection. To generate this key navigate to you bastion VM and click on the Instana tab.
 
-2. From the top left corner click on "Activities" and select "FireFox".
 
-![o1](img/addtargets/bastian1.png)
+2. This will take you to the Instana login page. log in using your Instana credentials. Instana credentials are provided in Turbo-PoT-Credentials tab.
 
-3. In the address bar, type in the IP address of your Instana server that is provided in the lab environment instructions.
+![instanatab](img/addtargets/instanatab.png)
 
-![o2](img/addtargets/bastian2.png)
-
-4. This will take you to the Instana login page. log in using your Instana credentials. Instana credentials are provided in Turbo-PoT-Credentials, which is opened on the second tab of the browser.
-
-![instana1](img/addtargets/instana1.png)
-
-5. Click on the gear icon on the left menu to open settings.
+3. Once you logged in, click on the gear icon on the left menu to open settings.
 
 ![instana2](img/addtargets/instana2.png)
 
-6. In the settings page, under "Team Settings" click on "API Tokens". Then click on "Add New Token".
+4. In the settings page, under "Team Settings" click on "API Tokens". Then click on "Add New Token".
 
 ![instana3](img/addtargets/instana3.png)
 
-7. Give your token a unique name like "api_YourInitials". Then scroll down and click on "Save". You can leave all other settings as default.
+5. Give your token a unique name like "api_YourInitials". Then scroll down and click on "Save". You can leave all other settings as default.
 ![instana4](img/addtargets/instana4.png)
 ![instana5](img/addtargets/instana5.png)
 
-8. Now click on the eye icon to reveal your API key and take a note of it. You will need this key in next section. 
+6. Now click on the eye icon to reveal your API token and take a note of it. You will need this key in next section. 
 ![instana6](img/addtargets/instana6.png)
 
 
 ### Add Instana as a target
 
-1. After you log in to the Turbonomic console, click on "Settings" from the navigator.
+1. Navigate to your Turbonomic console on the bastion VM, then click on "Settings" from the navigator.
 
 ![turbo-main](img/addtargets/turbo-main.png)
 
@@ -61,9 +54,9 @@ We have already prepared an Instana server for your environment. This server is 
 
 ![target-settings](img/addtargets/target-settings.png)
 
-3.  Click on "New Target". This will open up a page with a list of availble target types for this environment. 
+3.  Click on "New Target". This will open up a page with a list of available target types for this environment. 
 
-Tip: This is not an extensive list of availble target types. To view the full list and supported versions visit the [documentation site](https://www.ibm.com/docs/en/tarm/8.8.0?topic=overview-turbonomic-targets).
+**Tip:** This is not an extensive list of available target types. To view the full list and supported versions visit the [documentation site](https://www.ibm.com/docs/en/tarm/8.8.0?topic=overview-turbonomic-targets).
 
 ![target-page](img/addtargets/target-page.png)
 
@@ -75,7 +68,9 @@ Tip: This is not an extensive list of availble target types. To view the full li
 
 5. To add Instana all you need is the host name or IP address of your instana server, and an API token generated from your Instana backend. Once you filled out these information click on "Add" at the bottom of the page. Since we don't have a proxy we can leave those parts empty.
 
-Note: Keep in mind, the hostname or IP address must be visible to Turbonomic. If you have your Instana and Turbonomic instances installed in different networks or the communication between them is blocked by a firewall, the target configuration will fail. 
+**Note:** If you see the host name and/or IP address is prepopulated as administrator and a password in this step, clear both and type in your information. 
+
+**Tip:** Keep in mind, the hostname or IP address must be visible to Turbonomic. If you have your Instana and Turbonomic instances installed in different networks or the communication between them is blocked by a firewall, the target configuration will fail. 
 
 ![add-instana-3](img/addtargets/add-instana-3.png)
 
@@ -130,8 +125,8 @@ As per the requirements, for the KubeTurbo to communicate with the Turbonomic se
 
 The various steps to create a service account are:
 
-- Log in to the Turbonomic Server using credentails `administrator: <password from Turbo-PoT-Credentials>`
-- Go to Settings -> User Management 
+- From your Turbonomic UI navigate to Settings -> User Management 
+
   ![user_mgmt](img/addtargets/usermgmt.png)
 
 - Select **NEW LOCAL USER**  
@@ -149,7 +144,7 @@ The various steps to create a service account are:
 
 ### Install Kubeturbo on the kubernetes cluster
 
-The Kubeturbo is installed on the provided Kubernetes cluster. The various tasks are:
+The Kubeturbo is installed on the provided Kubernetes cluster. In this section you will SSH into your kubernetes cluster from your bastion VM. **So all commands will be executed from your bastion VM's Terminal window.**
 
 - Find the Turbonomic Server Version from the console: The version here is **8.8.2** as shown in the picture.  
   
@@ -159,8 +154,21 @@ The Kubeturbo is installed on the provided Kubernetes cluster. The various tasks
   
   ```
   ssh -p 2022 cocuser@10.0.0.3
-  cocuser@kmaster:~$ helm ls -A  (To list all the helm releases in the cluster)
-  cocuser@kmaster:~$ helm ls -n instana-agent (for example)
+  ```
+
+  To list all the helm releases in the cluster execute the command below.
+  ```
+  helm ls -A 
+  ```
+
+  For example: to view the release for Instana agent only run this command
+  ```
+  helm ls -n instana-agent
+  ```
+
+  The result will be something like this:
+  ```
+
    NAME          NAMESPACE    	REVISION	UPDATED                                	STATUS  	CHART               	APP VERSION
    instana-agent instana-agent	1       	2023-03-20 23:33:01.070041691 -0400 EDT	deployed	instana-agent-1.2.56	1.244.0
   ```
@@ -168,14 +176,17 @@ The Kubeturbo is installed on the provided Kubernetes cluster. The various tasks
 - [Kubeturbo git](https://github.com/turbonomic/kubeturbo.git) is cloned locally. Then follow the steps as:
 
   ```
-  cocuser@kmaster:~$ cd kubeturbo/deploy
-  cocuser@kmaster:~/kubeturbo/deploy$ kubectl create ns turbo
-  namespace/turbo created
+  cd kubeturbo/deploy
+  kubectl create ns turbo
+  ```
 
+  The result should be like this:
+  ```
+  namespace/turbo created
   cocuser@kmaster:~/kubeturbo/deploy$ 
   ```
 
-- Command to install kubeturbo is:
+- Now run this command to install kubeturbo. **Make sure to change the password for restAPIConfig.opsManagerPassword and set it to the one provided in the Credentials file. Be sure to remove any quotation marks ''**
   
   ```
   helm install  kubeturbo  ./kubeturbo --namespace turbo \
@@ -186,7 +197,7 @@ The Kubeturbo is installed on the provided Kubernetes cluster. The various tasks
        --set targetConfig.targetName=kubecluster1
   ```
 
-- Will give output as:
+  Will give output as:
 
   ```
   NAME: kubeturbo
@@ -197,44 +208,54 @@ The Kubeturbo is installed on the provided Kubernetes cluster. The various tasks
   TEST SUITE: None
   ```
 
-- **Tip**: The following commands may be handy
+**Tip**: The following commands may be handy in case you run into issues and need to troubleshoot.
 
-   ```
-   # To remove helm release
-   helm delete <release name> -n <namespace>
+```
+# To remove helm release
+helm delete <release name> -n <namespace>
 
-   For ex: helm delete kubeturbo -n turbo (To delete kubeturbo)
+For ex: helm delete kubeturbo -n turbo (To delete kubeturbo)
 
-   # To upgrade an existing release
-   helm upgrade <release name> -n <namespace> <other options>
+# To upgrade an existing release
+helm upgrade <release name> -n <namespace> <other options>
 
-   For ex: (note the password change)
-   helm upgrade  kubeturbo  ./kubeturbo --namespace turbo \
-       --set serverMeta.turboServer=https://10.0.0.1 \
-       --set serverMeta.version=8.8.2 --set image.tag=8.8.2 \
-       --set restAPIConfig.opsManagerUserName=kubeserviceaccount \
-       --set restAPIConfig.opsManagerPassword=myPassw0rd \
-       --set targetConfig.targetName=kubecluster1
+For example: (** Don't forget to change the password in the command **)
+helm upgrade  kubeturbo  ./kubeturbo --namespace turbo \
+    --set serverMeta.turboServer=https://10.0.0.1 \
+    --set serverMeta.version=8.8.2 --set image.tag=8.8.2 \
+    --set restAPIConfig.opsManagerUserName=kubeserviceaccount \
+    --set restAPIConfig.opsManagerPassword=myPassw0rd \
+    --set targetConfig.targetName=kubecluster1
 
-   # To set the context for a namespace
-   kubectl config set-context --current --namespace=<namespace>
+# To set the context for a namespace
+kubectl config set-context --current --namespace=<namespace>
 
-   For ex: (to set the context to turbo namespace)
-   kubectl config set-context --current --namespace=turbo
-   ```
+For ex: (to set the context to turbo namespace)
+kubectl config set-context --current --namespace=turbo
+```
+
 
 - You can check the logs to see if kubeturbo is communicating with the Turbonomic Server.
   
   ```
   kubectl -n turbo get pods 
+  ```
 
+  The result will be like following:
+  ```
   output
   ------
   NAME                         READY   STATUS    RESTARTS   AGE
   kubeturbo-5fb9df466d-l7lk4   1/1     Running   0          5m47s
-
+  ```
+  To check the logs for this pod take your pod's name from the output of the previous command and run the command below using your pod name.
+  ```
   kubectl -n turbo logs -f kubeturbo-5fb9df466d-l7lk4
+  ```
 
+  The result will be a loop that keeps printing the logs for that pod, similar to the snippet below:
+
+  ```
   snippet of output
   -----------------
   I0331 14:35:10.398686       1 kubeturbo_builder.go:519] ********** Start running Kubeturbo Service **********
@@ -248,8 +269,9 @@ The Kubeturbo is installed on the provided Kubernetes cluster. The various tasks
   I0331 14:35:10.407814       1 sdk_client_protocol.go:35] Starting protocol negotiation ....
   I0331 14:35:10.411017       1 sdk_client_protocol.go:118] Protocol negotiation result: ACCEPTED. Protocol version "8.8.2" is allowed to interact with server.
   ```
+**Tip:** to break out of the logs loop you can do a ctrl+c.
 
-- Also validate that the kubeturbo that is installed in show in the Turbonomic console. 
+- Now validate that the kubeturbo that is installed is showing up in the Turbonomic console. 
   - Go to Settings -> Target Configuration.
     
     ![settings](img/addtargets/kubeturbo_target.png)

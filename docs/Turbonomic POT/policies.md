@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# Policies
+# Policies ~ 30 minutes
 
 In the “Taking action” lab, you’ve learned how to take actions manually. But what if we wanted to automate this? Once we validate that it is safe and good to take a certain action and we trust it, we can allow the entities to act on their own decisions. 
 
@@ -17,6 +17,9 @@ To optimize your environment, Turbonomic recommends actions to place workloads s
 As Turbonomic gathers metrics, it compares the metric values against specified constraint and capacity settings to determine whether a metric exhibits a problem, and what actions to recommend or execute to avoid a problem. Turbonomic uses Automation Policies to guide its analysis and resulting actions.
 
 ## Lab - Explore existing policies
+
+### As a reminder, please ensure that you are logged in with an Administrator user. If you havent't logged out of your demo users, you will not have the necessary permissions to run through the labs.
+
 1. Navigate to "Settings", then "Policies". In this page, you will see a list of all existing policies.
 
 ![policy1](img/policies/policy1.png)
@@ -29,13 +32,13 @@ As Turbonomic gathers metrics, it compares the metric values against specified c
 
 3. Recall in "Actions" lab in the "Explore action modes" section where you saw some actions are blocked by policy and are set on recommend mode? Let's take a closer look at the policy responsible for that. The action you saw in that lab was a resize down action for storage. 
 
-    Scroll down in default policy list and click on "Storage Defaults". Now notice that this policy sets the "Resize" action acceptance are set to recommend. This will result in all resize actions generated for storage to be set to recommend only and be unable to execute within Turbonomic. 
+Scroll down in default policy list and click on "Storage Defaults". Now notice that this policy sets the "Resize" action acceptance are set to recommend. This will result in all resize actions generated for storage to be set to recommend only and be unable to execute within Turbonomic. 
 
 ![storage1](img/policies/storage1.png)
 
-4. Respectively, for the action that you explored for a cloud VM where you could manually accept and execute it within Turbonomic, there is a default policy set that defines that.
+4. Respectively, for the action that you explored for a cloud VM where you could manually accept and execute it within Turbonomic, there is a default policy set that defines that:
 
-    Navigate to "Virtual Machine Defaults" policy from the default policies list. You can see that all cloud scaling actions are set to "Manual" which allows them to be accepted and executed (assuming there are no prerequisits for them).
+Navigate to "Virtual Machine Defaults" policy from the default policies list. You can see that all cloud scaling actions are set to "Manual" which allows them to be accepted and executed (assuming there are no prerequisits for them).
 
 ![vm1](img/policies/vm1.png)
 
@@ -78,13 +81,14 @@ Congratulations! You succesfully created a policy to automate move actions for V
 
 ### Scale Cloud Volume
 
-In this section you will create an automation policy to automate scaling of cloud volume actions. For such automation, it would make more sense to select a volume or group of volume where they offer the lowest risk and highest reward (aka volumes that scaling actions for them is non-disruptive and reversable and offer cost savings). Do you recall in the "Actions" lab we executed a similar action manually? Now let's automate the same one.
+In this section you will create an automation policy to automate scaling of cloud volume actions. Let's automate volumes whose scaling actions are non-disruptive, reversible and offer cost savings (because they offer the lowest risk and highest reward).
+Do you recall in the "Actions" lab we executed a similar action manually? Now you will automate the same one.
 
 1. Navigate to "Policies" from "Settings". Then click on "New Automation Policy" on the top right side of the window. Select "Volumes" from the list.
 
 ![scale1](img/policies/scale1.png)
 
-2. Because our focus is scaling ckoud volumes, select cloud from the list on the left, then select "akachkaev-test-action_group" form the list and click on submit button.
+2. Because our focus is scaling cloud volumes, select cloud from the list on the left, then select "akachkaev-test-action_group" form the list and click on the submit button.
 
 ![scale2](img/policies/scale2.png)
 
@@ -92,26 +96,34 @@ In this section you will create an automation policy to automate scaling of clou
 
     ![scale3](img/policies/scale3.png)
 
-    1. Give your policy a unique name like "cloud_scale_YourInitials". 
-    2. Notice how the scope is set to the group of volumes you selected. 
-    3. We want this policy to be effective always and immediately so we will leave the "Policy Schedule" empty.
-    4. Toggle the "Volume Scaling Actions" to enable these actions.
-    5. Since we want to automate the lowest risk actions, use the pencil icon next to "Non-Disrubtive Revesible Scaling" to edit the "Action Acceptance" and set it to "Automatic". Leave the Orchestration settings as default. click on "Submit" to go back to the policy editor.
+    1- Give your policy a unique name like "cloud_scale_YourInitials". 
+    
+    2- Notice how the scope is set to the group of volumes you selected. 
+    
+    3- We want this policy to be effective always and immediately so we will leave the "Policy Schedule" empty.
+   
+    4- Toggle the "Volume Scaling Actions" on to enable these actions.
+   
+    5- Since we want to automate the lowest risk actions, use the pencil icon next to "Non-Disrubtive Revesible Scaling" to edit the "Action Acceptance" and set it to "Automatic". Leave the Orchestration settings as default. click on "Submit" to go back to the policy editor.
 
     ![scale4](img/policies/scale4.png)
 
-    6. Scroll down and set "Disruptive Reversible Scaling" to "manual" since you'd like to plan for the downtime resulting from this action before taking it.
-    7. Set "Disruptive Irreversible Scaling" to "Recommend". 
-    8. Since our goal is to maximize savings, choose that option.
-    9. Allow generation of "Volume Deletion Actions" by toggling it to green and set its action acceptance to "Manual"
+    6- Scroll down and ensure "Disruptive Reversible Scaling" is set to "manual" since you'd like to plan for the downtime resulting from this action before taking it.
+    
+    7- Set "Disruptive Irreversible Scaling" to "Recommend". 
+   
+    8- Since our goal is to maximize savings, choose that option.
+    
+    9- Allow generation of "Volume Deletion Actions" by toggling it to green and set its action acceptance to "Manual". 
 
     ![scale5](img/policies/scale5.png)
 
-    10. Scroll further down until you see a graph of and its settings below it. Do you recall when exploring the action details there was a chart showing the 95th pecentile of the utilization over 30 day observation period? That is a default in Turbonomic but if you wanted to change that this section is where you do it for the specified group of resources. The chart in this page will show the effect of changing each setting.
-        - **Agressivenes** - Defines what is the percentile you want the utilization of the resource to be before taking and action. Leave it at P95 for this lab.
-        - **Min Observation Period** - This tells Turbonomic what is the minimum time we want Turbonomic to monitor the resource before generating an action. Leave this setting as "None".
+    10- Scroll further down until you see a graph of and its settings below it. Do you recall when exploring the action details there was a chart showing the 95th pecentile of the utilization over 30 day observation period? That is a default in Turbonomic but if you wanted to change that this section is where you do it for the specified group of resources. The chart in this page will show the effect of changing each setting.
+        - **Aggressiveness** - Defines what is the percentile you want the utilization of the resource to be before taking and action. Leave it at P95 for this lab.
+        - **Min Observation Period** - This Lets Turbonomic know what the shortest amount of time is it needs to monitor a resource before generating actions to optimize it. Leave this setting as "None".
         - **Max Observation Period** - This settings tells Turbonomic how long we want it to monitor the resource before generating an action. Leave this setting as "30 days".
-    11. You can leave the rest of the settings in the policy editor as is and then click on "Save and Apply".
+    
+    11- You can leave the rest of the settings in the policy editor as is and then click on "Save and Apply". If a window pops up, click "Apply".
 
     ![scale6](img/policies/scale6.png)
 
@@ -137,23 +149,23 @@ In addition, a scheduled policy can include scheduled actions. When the policy i
     2. Select "Weekly" under Recurrence.
     3. Set to repeat every week only on Saturdays and Sundays.
     4. Select today's date as start date and "None" as end date. 
-    5. Set 12:00 as start time and 12 for duration hours.
+    5. Set 12:00 as start time and 12 for duration hours. **Please Note** if you are completing this lab after noon local time, you may want to adjust this time from 12:00 to few hours after your current time. The reason is that the system will not allow you to create a policy in the past.
     6. Select your timezone.
     7. Check the Summary and click on Submit.
 
     ![schedule3](img/policies/schedule3.png)
 
-7. Select your newly created schedule and click "Submit" 
+7. Select your newly created schedule and click "Set" 
 ![schedule4](img/policies/schedule4.png)
 8. Expand "Automation and Orchestration" and click on "Add Action".
 ![schedule5](img/policies/schedule5.png)
-9. For action type select "VCPU-Resize-Down", for action acceptance select "Automatic" and then click on "Add Schedule" under Execution Schedule. This section will define the **action schedule**. 
+9. For action type select "VCPU-Resize-Down", for action acceptance select "Automatic" and then click on "Add Schedule" under Execution Schedule. This section will define the **action schedule**. Create a new schedule to assign to the **action**. Click on "Add Schedule" under "Execution Schedule" and then click on "New Schedule" to create a different schedule for your action.
 
-- **Tip** - In this schenario, we want the policy to be effective on Saturdays and Sundays from 12:00PM - midnight. But we want to automatically accept and execute VCPU resize actions ONLY on Sundays from 12:00PM - 6:00PM where we know the load is at its lowest.
+- **Tip** - In this scenario, we want the policy to be effective on Saturdays and Sundays from 12:00PM - midnight. But we want to automatically accept and execute VCPU resize actions ONLY on Sundays from 12:00PM - 6:00PM where we know the load is at its lowest.
 
 ![schedule6](img/policies/schedule6.png)
 
-10. Type in a name for your schedule like **action_schedule_YourInitials** and fill in the information as specified in the image below. Once done click on "Submit"
+10. Type in a name for your schedule like **action_schedule_YourInitials** and fill in the information as specified in the image below. Once done click on "Submit". Make sure to select Sunday only and set the start date as the upcoming Sunday. (Remember, you can't create a policy in the past. It should start from a date in the future)
 
 ![schedule7](img/policies/schedule7.png)
 

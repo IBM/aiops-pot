@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Overview
+# Overview ~ 5 minutes
 ## Introduction
 Application Resource Management is a top-down, application-driven approach that continuously analyzes applications' resource needs and generates fully automatable actions to ensure applications always get what they need to perform. It runs 24/7/365 and scales with the largest, most complex environments.
 
@@ -12,10 +12,12 @@ To perform Application Resource Management, Turbonomic represents your environme
 
  - **Efficient use of resources** - Consolidate workloads to reduce infrastructure usage to the minimum, downsize containers, prevent sprawl, and use the most economical cloud offerings.
 
-In this proof of technology session, you will go through series of labs to explore Turbonomic and its components and walk through scenarios of which this APM tool can add benefit.
+In this proof of technology session, you will go through a series of labs to explore Turbonomic and its components and walk through scenarios of which this APM tool can add benefit.
 
 ## Architecture
 Below is a high level view of your environment's architecture.
+
+![architecture](img/architecture.png)
 
 
 
