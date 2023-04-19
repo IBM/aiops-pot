@@ -3,6 +3,6 @@
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "onitoring A Cloud Native App."
+    "description": "This Instana lab is focused on monitoring IBM WebSphere and DB2.  The Instana proof of technology (PoT) provides hands-on experience using Instana in a controlled environment.  The systems, application, and usage scenarios that is part of the POT were predefined.  You'll gain experience using Instana by installing agent(s), exploring various aspects of Instana, troubeshoot application issue(s), and more."
   }
 }
