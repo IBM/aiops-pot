@@ -2,7 +2,8 @@
 sidebar_position: 6
 ---
 
-# Actions ~ 30 minutes
+# Actions 
+~ 30 minutes
 
 After you deploy your targets, Turbonomic starts to perform market analysis as part of its Application Resource Management process. This holistic analysis identifies problems in your environment and the actions you can take to resolve and avoid these problems. Turbonomic then generates a set of actions for that particular analysis and displays it in the Pending Actions charts for you to investigate.
 

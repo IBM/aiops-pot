@@ -2,7 +2,8 @@
 sidebar_position: 8
 ---
 
-# Planning ~ 30 minutes
+# Planning 
+~ 30 minutes
 
 Planning page in Turbonomic is used to run simulations for what-if scenarios that will help you gain insight into what are the results of certain changes before making them. A plan has no impact on real-time environments. 
 

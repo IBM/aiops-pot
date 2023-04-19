@@ -2,7 +2,9 @@
 sidebar_position: 9
 ---
 
-# Custom Dashboard ~ 20 minutes
+# Custom Dashboard 
+~ 20 minutes
+
 In this lab, we will show you how to create a Custom Dashboard. 
 
 A custom dashboard is a view that you create to focus on specific aspects of your environment. You can create dashboards that are private to your user account, or dashboards that are visible to any user who logs into your Turbonomic deployment.

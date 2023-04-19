@@ -2,7 +2,8 @@
 sidebar_position: 4
 ---
 
-# Administration ~ 15 minutes
+# Administration 
+~ 15 minutes
 
 ## Managing User Accounts
 

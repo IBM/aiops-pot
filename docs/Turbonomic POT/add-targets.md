@@ -2,7 +2,8 @@
 sidebar_position: 3
 ---
 
-# Add Targets ~ 60 minutes
+# Add Targets 
+~ 60 minutes
 
 A target is a service that performs management in your virtual environment. Turbonomic uses targets to monitor workload and to execute actions in your environment. Turbonomic communicates with the target via the management protocol that it exposes — The REST API, SMI-S, XML, or some other management transport. Turbonomic uses this communication to discover the managed entities, monitor resource utilization, and execute actions.
 

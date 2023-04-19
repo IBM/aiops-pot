@@ -2,7 +2,9 @@
 sidebar_position: 1
 ---
 
-# Overview ~ 5 minutes
+# Overview 
+~ 5 minutes
+
 ## Introduction
 Application Resource Management is a top-down, application-driven approach that continuously analyzes applications' resource needs and generates fully automatable actions to ensure applications always get what they need to perform. It runs 24/7/365 and scales with the largest, most complex environments.
 

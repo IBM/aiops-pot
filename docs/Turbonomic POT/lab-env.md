@@ -1,7 +1,9 @@
 ---
 sidebar_position: 2
 ---
-# Your lab environment ~ 15 minutes
+# Your lab environment 
+~ 15 minutes
+
 To go through your lab sessions you need to first access your environment. Most of the labs will use the Turbonomic UI. Below is the list of the instances you will use during this proof of technology session.
 
 - **bastion VM** - This is your main desktop. You will run the labs in this VM. It can be accessed using the link provided by your proctor. The link should automatically log you in the system (no user and password required).

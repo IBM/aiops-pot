@@ -2,7 +2,8 @@
 sidebar_position: 7
 ---
 
-# Policies ~ 30 minutes
+# Policies 
+~ 30 minutes
 
 In the “Taking action” lab, you’ve learned how to take actions manually. But what if we wanted to automate this? Once we validate that it is safe and good to take a certain action and we trust it, we can allow the entities to act on their own decisions. 
 

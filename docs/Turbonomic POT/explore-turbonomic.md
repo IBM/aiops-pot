@@ -2,7 +2,9 @@
 sidebar_position: 5
 ---
 
-# Explore Turbonomic ~ 15 minutes
+# Explore Turbonomic 
+~ 15 minutes
+
 Welcome to Turbonomic! In this lab, you will explore the Turbonomic user interface and familiarize yourself with its different parts. 
 
 **Note:** You logged in with an admin user so you will be able to see the entire environment monitored by Turbonomic. Once you go through the "Administration" lab, you will learn that different access levels can be assigned to users and their dashboard will differ from what you see here.
