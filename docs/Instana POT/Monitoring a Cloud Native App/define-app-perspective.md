@@ -165,6 +165,7 @@ Fly your mouse over the **QM1** node. Flying over any node in the dependency gra
 ![explore application 5](images/explore_application_5.jpg)
 
 Click on the **"QM1"** node. Notice that there are 3 options that would allow you to navigate to the MQ dashboard, the transaction Flow within MQ, or analyze the transaction calls through MQ. For now, we'll skip this navigation, but we suggest you explore those options later.
+
 **Image 18**
 ![explore application 6](images/explore_application_6.jpg)
 
@@ -259,5 +260,7 @@ When you select the ACE portions of the call Stack (gen.supplychain, msgFlowTran
 
 
 ## 
+
+You have now successfully completed this lab and have learnt how to "Define an Application Perspective" and navigate your application and it's components using Instana. Please proceed to the next lab where you will learn about EUM ("End User Monitoring").
 
 

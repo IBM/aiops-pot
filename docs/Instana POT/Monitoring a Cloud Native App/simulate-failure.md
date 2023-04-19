@@ -18,7 +18,7 @@ Now Click on "Start" whenever you are ready to inject the following failures as 
 
 Now the system will take time to simulate the failures. Please give atleast 3-5 minutes for the system to simulate the failures.
 
-All of these failures will be in the qotd-rating service. There are going to be 4 failure scenarios in teh qotd-rating service.
+All of these failures will be in the qotd-rating service. There are going to be 4 failure scenarios in the qotd-rating service.
 
 1. Rating service failing with 500/404 errors half of the time.
 2. Increase latency in primary GET /ratings/:id to 0.9 seconds
@@ -51,7 +51,7 @@ Now we can see all the end points getting errors as shown in the picture below w
 
 ![see_all_failures_with_GET_Ratings](images/see_all_failures_with_GET_Ratings.png)
 
-Now we have to analyze all the failures by from the qotd-rating service as shown in the picture below.
+Next, we will analyze all the failures in the qotd-rating service by clicking "Analyze Calls" as shown in the picture below.
 
 ![GET_Ratings](images/GET_Ratings.png)
 
@@ -59,7 +59,7 @@ In this Analytics screen you can see that we are automatically looking at qotd-r
 
 ![4XX_5XX_Analytics](images/4XX_5XX_Analytics.png)
 
-Now we are selecting the top group which has the most 4XX and 5XX errors. Notice you did not have to type any SQL query to get to this result since Instana automatically knows the context of your troubleshooting scenario.
+Next, select the top group which has the most 4XX and 5XX errors. Notice you did not have to type any SQL query to get to this result since Instana automatically knows the context of your troubleshooting scenario.
 
 ![Select_Group](images/Select_Group.png)
 
@@ -76,7 +76,9 @@ Lastly you can see the log message which the simulation injected.
 ![Log_message](images/Log_message.png)
 
 
+You have successfully completed this lab. In this lab, you learnt how to successfully troubleshoot some common issues. 
 
+If you ready, move on to the next lab where you will learn how to define Alerts and Alert Channels.
 
 
 

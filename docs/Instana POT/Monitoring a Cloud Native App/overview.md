@@ -100,7 +100,8 @@ Once the TechZone environment finishes provisioning, you can access the applicat
 5. Press the **Accept the Risk and Continue** button.
     ![risk 2](images/getting_started/15_security_risk_2.png)
 
-6. Use the clipboard popup and paste in the user and password information. Then press the **Sign In** button.  The E-mail value is 'admin@instana.local', and the Password is 'lfQTxDwLRW'. 
+6. Use the clipboard popup and paste in the user and password information. Then press the **Sign In** button.  The E-mail value is 'admin@instana.local', and the  **Password:** "please refer to credentials.pdf" on the Instana server.
+
     ![paste pass](images/getting_started/17_paste_instana_pwd.png)
 
 7. Save the login to make it easier in the future.
@@ -199,7 +200,7 @@ Verify that all the applications are running correctly before starting any labs.
 7. Press the **Order Engraving** button.
     ![order 1](images/getting_started/31_qotd_order_1.png)
 
-8. Press the blue **Order Engraving** button.  If the ACE and MQ services are running it should respond with a conformation dialog.
+8. Press the blue **Order Engraving** button.  If the ACE and MQ services are running it should respond with a confirmation dialog.
     ![order 2](images/getting_started/32_qotd_order_2.png)
 
 ### Number Factory
@@ -216,3 +217,4 @@ Verify that all the applications are running correctly before starting any labs.
 11. Click on the **Services** link at the top of the page.  This page shows all the microservices that are reporting in to the anomaly generator.  Ensure that all the values for **Last Checkin** are just a few seconds old. 
     ![anom 2](images/getting_started/35_anomaly_generator_services.png)
 
+You can now proceed to the Instana Agent Installation lab. 

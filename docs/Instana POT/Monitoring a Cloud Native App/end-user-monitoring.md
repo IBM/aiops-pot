@@ -1,8 +1,6 @@
 ---
 sidebar_position: 7
 ---
-# End User Monitoring
-
 ## 1: Websites and Mobile App Monitoring
 
 :::note
@@ -22,7 +20,7 @@ Next, let's take a look at Website and Mobile Application Monitoring. In this en
 
 Using the left side navigation, select **Websites & Mobile Apps**
 
-**Image 1**I
+**Image 1**
 
 ![explore application 20](images/explore_application_20.jpg)
 
@@ -30,7 +28,7 @@ Using the left side navigation, select **Websites & Mobile Apps**
 
 Instana supports website monitoring by analyzing actual browser request times and route loading times. It allows detailed insights into the web browsing experience of users, and deep visibility into application call paths. The Instana website monitoring solution works by using a lightweight JavaScript agent, which is embedded into the monitored website.
 
-To Configure **EUM*,  Click on **"Add Website"** 
+To Configure *EUM*,  Click on **"Add Website"** 
 
 **Image 2**
 ![explore application 21](images/explore_application_21.jpg)
@@ -42,7 +40,7 @@ Type in the name as **"QOTD"**
 
 Copy the 3 values as shown in **Image 3** to add these to the environment variables of the **QOTD** app deployment.
 
-Login to the qotd master vm 
+Login to the qotd master vm by typing the following in  Terminal window on the bastion vm
 
   ```console
   ssh -p 2022 cocuser@169.62.62.174
@@ -184,7 +182,7 @@ Select the dropdown at the top of the page labeled **Applications / Calls** to v
 ![explore application 35](images/explore_application_35.jpg)
 One of the key Instana capabilities is **unbounded analytics**. This allows you to apply ad-hoc queries to easily find the data you are looking for. On the screen, you'll see a couple of different ways that you can query/filter the metrics.
 
-One the left side, you'll see a number of about of the box filters. Expand the dropdown arrows to see the options. Then, select one of the checkboxes to filter the data. (in this example select **Quote Of The Day**)
+On the left side, you'll see a number next to the box filters. Expand the dropdown arrows to see the options. Then, select one of the checkboxes to filter the data. (in this example select **Quote Of The Day**)
 
 **Image 16**
 
@@ -221,6 +219,8 @@ In the upper right corner of the screen, there is an icon of a chain link. Click
 
 ![explore application 39](images/explore_application_39.jpg)
 
-That completes the **End User Monitoring** section,  of the lab.
+That completes this lab. In the lab you learnt how to set up **End User Monitoring** for your application and reviewed a lot of functionality including analyzing calls for your application.  
+
+Next, please proceeed to the lab where you will learn how to troubleshoot an issue. 
 
 ---

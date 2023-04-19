@@ -24,7 +24,7 @@ You will see a list of Kubernetes clusters. Look for the Cluster name that you c
 **Image 2**
 ![explore instana 2](images/explore_instana_2.jpg)
 
-Assuming that your cluster shows up properly, click the cluster name to open the dashboard.
+Assuming that your cluster shows up properly, click the cluster name to open the dashboard. If it doesn't show up, ask one of the proctars for help and review your setup.
 
 You should see a screen similar to the one below where you can see overall utilization of the Kubernetes cluster.
 
@@ -72,7 +72,7 @@ Or, you can use the lucene query language in the filter/search bar at the top of
   wildcard search. For example **"entity.host.name:\*abc\*"**. Type in a
   wildcard string that matches the beginning of the hostname you found earlier.
   In my example, I could specify **"entity.host.name:\*mqace\*"** to filter on
-  the MQ/ACE server.
+  the MQ/ACE server.(The * is needed in the start and end so you can search for anything with mqace in the above example)
 
 **Image 7**
 
@@ -82,15 +82,15 @@ There are many other types of queries that can be executed using the filter/sear
 
 Clear the filter at the top of the page by clicking on the X
 
-Next, flyover the tower that represents either the ipot-vm server or the ipot-rsmaster kubernetes worker or master node. They taller the tower the more entities are discovered running on those servers.
+Next, hover over with the mouse cursor to the tower that represents either the ipot-vm server or the ipot-rsmaster kubernetes worker or master node. They taller the tower the more entities are discovered running on those servers. You'll notice that each tower is actually comprised of multiple pizza boxes. Each one represents an **"Entity"** such as Docker Container or a Node js App.
 
 **Image 8**
 
 ![explore instana 8](images/explore_instana_8.jpg)
 
-You'll notice that a number of components were automatically discovered and are instrumented for monitoring.
+You'll notice that a number of components were automatically discovered and are instrumented for monitoring. When you hover over the vm ensure you can see the multiple components and not a single component. 
 
-Next, flyover the ipot-mqace tower.
+Next, hover over with your mouse on the ipot-mqace tower.
 
 **Image 9**
 
@@ -185,8 +185,8 @@ Next, look at the top of the screen. You'll notice that this is a breadcrumb tha
 
 ![explore instana 21](images/explore_instana_21.jpg)
 
-_________________________________________________________________________________________________________________________
 
+You have now successfully completed this lab. You explored the Kubernetes and Infrastructure view and learnt how easy it is to navigate through your application components in Instana. Please proceed to the next lab where you will learn about how to Define an Application perspective and dive deeper into the sub-components of your application.
 
 
 

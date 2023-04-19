@@ -24,6 +24,7 @@ Instana can Alert on your website or your backend applications or the underlying
     - Custom Events which can include custom parameters which can be tracked by the Javascript Agent API (https://www.ibm.com/docs/en/instana-observability/current?topic=websites-javascript-agent-api#reporting-custom-events)
 
 
+### Creating a Smart Alert
 We are going to create Smart Alert for an Application:
 Click on Left hand tool bar and select "Applications" as shown below.
 
@@ -45,7 +46,7 @@ Now you can click on Last 7 days to see the Graph of Last seven days as it relat
 
 ![Graph_of_seven_days](images/Graph_of_seven_days.png)
 
-Now that you have seen both the graphs, we can look the values onm the graphs. The red line shows us the Threshold is set by default by Instana and the Blue Line on the graph shows the actual slow calls which has happened in last 24 hours or 7 days whichever graph is being looked at. If you put your mouse/cursor on the Red Line or the blue line on the Graph you can see the actual threshold limit and the actual latency (how slow or fast all your services are taking) as shown below.
+Now that you have seen both the graphs, we can look the values on the graphs. The red line shows us the Threshold is set by default by Instana and the Blue Line on the graph shows the actual slow calls which has happened in last 24 hours or 7 days whichever graph is being looked at. If you put your mouse/cursor on the Red Line or the blue line on the Graph you can see the actual threshold limit and the actual latency (how slow or fast all your services are taking) as shown below.
 
 ![Place_your_Cursor](images/Place_your_Cursor.png)
 
@@ -66,6 +67,8 @@ Now you can select any number of services which you want to get alerted. In this
 ![Select_service](images/Select_service.png)
 
 Now you can select an existing Alert Channel if you have already created one by Clicking "Select Alert Channels" or you can create a new Alert Channel. We are going to be creating a new Alert Channel today.
+
+### Creating an Alert Channel
 
 ![Select_Alert_Channel](images/Select_Alert_Channel.png)
 
@@ -94,5 +97,7 @@ After Creating the Alert Channel, we can select that Alert Channel
 You will see a dialog message appear after you have created the alert on top right.
 ![Dialog_message_box_after_creating_alert_and_alert_channel.png](images/Dialog_message_box_after_creating_alert_and_alert_channel.png)
 
+You have now successfully completed this lab. In this lab, you learnt how easy it is to create Alerts and define "Alert Channels". You create the email Alert channel in the above example but as you saw there are lots of options available thus making it easy to integrate Instana with other tools.
 
+Proceed to the next lab.
 
